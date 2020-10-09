@@ -31,12 +31,12 @@ In this game, you are thrown into what could be a relationship ending argument. 
 (set: $pathA to false)
 (set: $pathB to false)
 (set: $pathC1 to false)
-(set: $pathC2 to false)</tw-passagedata><tw-passagedata pid="2" name="Take a deep breath." tags="" position="600,425" size="100,100">The words &quot;YOU ARE A LUNATIC, I&#39;M DONE WITH THIS!&quot; crash out of your mouth.  Staring down the shattered hallway, you envision it was the echo of your own voice bouncing off the walls that left the trail of destruction.  You walk into the living room, through the window you see your partner leaning against the balcony railing, smoking a cigarette.  A long plume of smoke escapes their lips.
+(set: $pathC2 to false)</tw-passagedata><tw-passagedata pid="2" name="Take a deep breath." tags="" position="598,425" size="100,100">The words &quot;YOU ARE A LUNATIC, I&#39;M DONE WITH THIS!&quot; crash out of your mouth.  Staring down the shattered hallway, you envision it was the echo of your own voice bouncing off the walls that left the trail of destruction.  You walk into the living room, through the window you see your partner leaning against the balcony railing, smoking a cigarette.  A long plume of smoke escapes their lips.
 
 [[Talk to them]]
 
 [[Pack your bags]]
-(if: $pathA || $pathB is true )[[Take a drive]]
+(if: $pathA || $pathB is true )[ [[Take a drive]]]
 (if: $TADB is false)[ (set: $counter += 1) ]
 (set: $TADB to true)</tw-passagedata><tw-passagedata pid="3" name="Talk to them" tags="Branch-1" position="2280,1319" size="100,100">(set: $pathB to true)
 You squeeze through the jammed, sliding glass door and cautiously approach them.  They take a single step away from you and extend their gaze up at the sky.
@@ -350,7 +350,7 @@ The uber pulls up to the bar.  You get out and light a cigarette.  &quot;Ok, get
 
 [[Toss the phone.]]
 (if: $further is false)[ (set: $counter to it + 1) ]
-(set: $further $ to true)</tw-passagedata><tw-passagedata pid="59" name="End Game and Credits" tags="" position="2998,302" size="100,100">Congratulations on your first playthrough of Toxicity!  This game originated from a discussion about infinite loops in programming and how it is similar to being in a toxic relationship.  For whatever reason, you are trapped.  Eventually, after enough pain and suffering you finally get the code to compile or come to your senses and leave the relationship. I hope you enjoyed your time with my story!  
+(set: $further to true)</tw-passagedata><tw-passagedata pid="59" name="End Game and Credits" tags="" position="2998,302" size="100,100">Congratulations on your first playthrough of Toxicity!  This game originated from a discussion about infinite loops in programming and how it is similar to being in a toxic relationship.  For whatever reason, you are trapped.  Eventually, after enough pain and suffering you finally get the code to compile or come to your senses and leave the relationship. I hope you enjoyed your time with my story!  
 (set: $total += $counter)
 You have completed (print: $total) of 62 passages!  Get the full story and take the journey again!
 
@@ -371,7 +371,7 @@ All feedback is appreciated.  Tweet me @JoshuaAShook1
 
 [[Try and keep your composure.-&gt;Take a deep breath.]]
 (if: $RIDE is false)[ (set: $counter to it + 1) ]
-(set: $RIDE to true)</tw-passagedata><tw-passagedata pid="63" name="Play Game" tags="" position="485,134" size="100,100">                              Toxicity
+(set: $RIDE to true)</tw-passagedata><tw-passagedata pid="63" name="Play Game" tags="" position="486,134" size="100,100">                              Toxicity
 					   
 					   A Game By Joshua Shook
 
@@ -441,11 +441,11 @@ All feedback is appreciated.  Tweet me @JoshuaAShook1
 
 [[Fall asleep]]
 (if: $Lean is false)[ (set: $counter to it + 1) ]
-(set: $Lean to true)</tw-passagedata><tw-passagedata pid="65" name="Toss the phone." tags="" position="3000,558" size="100,100">You toss the phone.  As you drive forward you look into your rear view mirror.  You can see its light fading away the further you go.  Then you realize, you&#39;re smiling at your own reflection again.  You have put yourself first and are on your way to creating the life you desire.
+(set: $Lean to true)</tw-passagedata><tw-passagedata pid="65" name="Toss the phone." tags="" position="3000,557" size="100,100">You toss the phone.  As you drive forward you look into your rear view mirror.  You can see its light fading away the further you go.  Then you realize, you&#39;re smiling at your own reflection again.  You have put yourself first and are on your way to creating the life you desire.
 
 [[End Game and Credits]]
 (if: $Toss is false)[ (set: $counter to it + 1) ]
-(set: $Toss $ to true)</tw-passagedata><tw-passagedata pid="66" name="View Credits" tags="" position="2802,179" size="100,100">[[Discover all the passages.-&gt;Play Game]]
+(set: $Toss to true)</tw-passagedata><tw-passagedata pid="66" name="View Credits" tags="" position="2802,179" size="100,100">[[Discover all the passages.-&gt;Play Game]]
 
 Works Cited
 
