@@ -11,7 +11,7 @@
 
 <tw-story></tw-story>
 
-<tw-storydata name="Toxicity" startnode="64" creator="Twine" creator-version="2.3.9" ifid="5BD900C2-69F9-42E6-88E4-E2FCBD18FAAE" zoom="1" format="Harlowe" format-version="3.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-story {background-image:url("https://static.wixstatic.com/media/723267_7ec81b41774042949a33874b355fbbfb~mv2.jpg");background-size:cover;}
+<tw-storydata name="Toxicity" startnode="63" creator="Twine" creator-version="2.3.9" ifid="5BD900C2-69F9-42E6-88E4-E2FCBD18FAAE" zoom="1" format="Harlowe" format-version="3.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-story {background-image:url("https://static.wixstatic.com/media/723267_7ec81b41774042949a33874b355fbbfb~mv2.jpg");background-size:cover;}
 
 tw-passage {color: white;
 	text-align: center;
@@ -36,229 +36,431 @@ In this game, you are thrown into what could be a relationship ending argument. 
 [[Talk to them]]
 
 [[Pack your bags]]
-
 (if: $pathA || $pathB is true )[[Take a drive]]
-</tw-passagedata><tw-passagedata pid="3" name="Talk to them" tags="Branch-1" position="2280,1319" size="100,100">(set: $pathB to true)
+(if: $TADB is false)[ (set: $counter += 1) ]
+(set: $TADB to true)</tw-passagedata><tw-passagedata pid="3" name="Talk to them" tags="Branch-1" position="2280,1319" size="100,100">(set: $pathB to true)
 You squeeze through the jammed, sliding glass door and cautiously approach them.  They take a single step away from you and extend their gaze up at the sky.
 
 [[What are we doing?]]
 
-[[Remain silent.....]]</tw-passagedata><tw-passagedata pid="4" name="Pack your bags" tags="" position="602,601" size="100,100">(set: $pathA to true)
+[[Remain silent.....]]
+(if: $Talk is false)[ (set: $counter to it + 1) ]
+(set: $Talk to true)</tw-passagedata><tw-passagedata pid="4" name="Pack your bags" tags="" position="602,601" size="100,100">(set: $pathA to true)
 You retreat to the bedroom.  I gotta get outta this place, you silently tell yourself.  You grab your suitcase and start throwing clothes and any items of sentiment into it.  You come across a picture of you and your partner when times were good.  Shaking your head, you make the decision to set it aside.  A good amount of time has passed and you have finished packing.  You look around at the items you&#39;re leaving and decide that it&#39;s best just to leave without them.  You zip up your suitcase and....
 
-[[Turn around]]</tw-passagedata><tw-passagedata pid="5" name="Take a drive" tags="" position="1099,500" size="100,100">You start your car, light up a cigarette, and put on the song &quot;I-85&quot; by the Young Bloodz on the radio.  The air in your hair, mixed with the nicotine high and fond memories of your youth relax you.
+[[Turn around]]
+(if: $Pack is false)[ (set: $counter += 1) ]
+(set: $Pack to true)</tw-passagedata><tw-passagedata pid="5" name="Take a drive" tags="" position="1099,500" size="100,100">You start your car, light up a cigarette, and put on the song &quot;I-85&quot; by the Young Bloodz on the radio.  The air in your hair, mixed with the nicotine high and fond memories of your youth relax you.
 
 (if: $pathC2 is not true)[[Drive to your local watering hole. (You assume one of your friends will be there]]
 
 (if: $pathC1 is not true)[[Drive to the lake to think.]]
 
-[[Keep driving.]]</tw-passagedata><tw-passagedata pid="6" name="What are we doing?" tags="" position="2251,1517" size="100,100">&quot;You tell me.  I am doing everything I can to make this work.&quot;  Your stomach tenses a little.  Ok, so your telling me that none of this was your fault?  They flick their cigarette and whip around looking you dead in the face.  &quot;You overreacted, as always!&quot;  You are taken back and a little frightened to escalate the situation further.
+[[Keep driving.]]
+(if: $DRIVE is false)[ (set: $counter to it + 1) ]
+(set: $DRIVE to true)</tw-passagedata><tw-passagedata pid="6" name="What are we doing?" tags="" position="2251,1517" size="100,100">&quot;You tell me.  I am doing everything I can to make this work.&quot;  Your stomach tenses a little.  Ok, so your telling me that none of this was your fault?  They flick their cigarette and whip around looking you dead in the face.  &quot;You overreacted, as always!&quot;  You are taken back and a little frightened to escalate the situation further.
 
 [[Look, we have been on the rocks for a while now.  Maybe we could use a break.]]
 
-[[I over react?!]]</tw-passagedata><tw-passagedata pid="7" name="Remain silent....." tags="" position="2375,1131" size="100,100">&quot;Look, i&#39;m gonna go stay with my parents for a while.  I can&#39;t keep doing this.  You overreact to everything and I&#39;m done feeling like the victim.&quot;  They say with a bit of arrogance.
+[[I over react?!]]
+(if: $What is false)[ (set: $counter to it + 1) ]
+(set: $What to true)</tw-passagedata><tw-passagedata pid="7" name="Remain silent....." tags="" position="2375,1131" size="100,100">&quot;Look, i&#39;m gonna go stay with my parents for a while.  I can&#39;t keep doing this.  You overreact to everything and I&#39;m done feeling like the victim.&quot;  They say with a bit of arrogance.
 
 [[Your gonna put all this on me?-&gt;I over react?!]]
 
-[[(Ignore the bait)  You&#39;re right, we could use some time apart.]]</tw-passagedata><tw-passagedata pid="8" name="Turn around" tags="" position="633,794" size="100,100">Standing in the doorway is your partner with a look of concern and eyes that are begging for consolation.  &quot;Why are you doing this?&quot;
+[[(Ignore the bait)  You&#39;re right, we could use some time apart.]]
+(if: $Remain is false)[ (set: $counter to it + 1) ]
+(set: $Remain to true)</tw-passagedata><tw-passagedata pid="8" name="Turn around" tags="" position="638,794" size="100,100">Standing in the doorway is your partner with a look of concern and eyes that are begging for consolation.  &quot;Why are you doing this?&quot;
 
 [[Look, this isnt working.  We have tried, but time and time again we end up in the same spot.]]
 
 [[Getting out of here before I lose my mind!-&gt;So you admit it, there is something between you two.]]
 
 [[I need some time to think.  I have a place to crash for a while.]]
-</tw-passagedata><tw-passagedata pid="9" name="Drive to your local watering hole. (You assume one of your friends will be there" tags="" position="1300,500" size="100,100">(set: $pathC2 to true)
+(if: $Turn is false)[ (set: $counter to it + 1) ]
+(set: $Turn to true)</tw-passagedata><tw-passagedata pid="9" name="Drive to your local watering hole. (You assume one of your friends will be there" tags="" position="1300,500" size="100,100">(set: $pathC2 to true)
 You park your car near the back of the bar, flick your cigarette into the gravel and head towards the door.  &quot;HHHHHHEEEEEEEYYYYYYYOOOOOOOO!!!!!&quot; Thank god, your people are here!  You walk up to the bar and are happily embraced.  &quot;This night keeps getting better.&quot; Darnell says as he waves over the bartender.  &quot;Three shots of El Jimador please.&quot;
 
 [[Dude, I don&#39;t feel like drinking tonight.]]
 
-[[Just what the doctor ordered!]]</tw-passagedata><tw-passagedata pid="10" name="Drive to the lake to think." tags="" position="1089,314" size="100,100">(set: $pathC1 to true)
+[[Just what the doctor ordered!]]
+(if: $Bar is false)[ (set: $counter to it + 1) ]
+(set: $Bar to true)</tw-passagedata><tw-passagedata pid="10" name="Drive to the lake to think." tags="" position="1089,314" size="100,100">(set: $pathC1 to true)
 You arrive at the shoreline and park your vehicle.  It&#39;s a peaceful evening, you see the sun setting, and the sound of geese flying over your head.  As you make your way to the water you see a group of old men fishing, you greet them kindly and find an abandoned bench to sit on.  You scroll through your favorites list and find your dad.  The picture on his profile is of you and him playing around in the yard when you were a teenager.  Looking at it you crack a smile.
 
-[[Call your dad.]]</tw-passagedata><tw-passagedata pid="11" name="Dude, I don&#39;t feel like drinking tonight." tags="" position="1556,732" size="100,100">Bawhahahahaha!  Yeah ok bro.  Darnell and Toni look at you with bright and hopeful eyes as they lift up their shot glasses.  You roll your eyes.
+[[Call your dad.]]
+(if: $LAKE is false)[ (set: $counter to it + 1) ]
+(set: $LAKE to true)</tw-passagedata><tw-passagedata pid="11" name="Dude, I don&#39;t feel like drinking tonight." tags="" position="1556,732" size="100,100">Bawhahahahaha!  Yeah ok bro.  Darnell and Toni look at you with bright and hopeful eyes as they lift up their shot glasses.  You roll your eyes.
 
-[[Down the hatch!-&gt;Just what the doctor ordered!]] </tw-passagedata><tw-passagedata pid="12" name="Just what the doctor ordered!" tags="" position="1504,497" size="100,100">&quot;So what&#39;s up with you?  You look like you have been through the ringer.&quot;  Toni says with a smartass smile.
+[[Down the hatch!-&gt;Just what the doctor ordered!]] 
+(if: $Dude is false)[ (set: $counter to it + 1) ]
+(set: $Dude to true)</tw-passagedata><tw-passagedata pid="12" name="Just what the doctor ordered!" tags="" position="1504,497" size="100,100">&quot;So what&#39;s up with you?  You look like you have been through the ringer.&quot;  Toni says with a smartass smile.
 
 [[I have had it with this relationship.  Nothing ever changes!]]
 
-[[Don&#39;t even worry about it.  I am just happy to be here chilling with yall.]]</tw-passagedata><tw-passagedata pid="13" name="Look, this isnt working.  We have tried, but time and time again we end up in the same spot." tags="" position="495,932" size="100,100">&quot;So what, your just gonna give up on us!  We will never fix us if you keep running away from our problems.&quot;  You think to yourself, do you run away, are you not trying hard enough?  You know that you&#39;re not completely innocent in all of this.
+[[Don&#39;t even worry about it.  I am just happy to be here chilling with yall.]]
+(if: $Doc is false)[ (set: $counter to it + 1) ]
+(set: $Doc to true)</tw-passagedata><tw-passagedata pid="13" name="Look, this isnt working.  We have tried, but time and time again we end up in the same spot." tags="" position="495,932" size="100,100">&quot;So what, your just gonna give up on us!  We will never fix us if you keep running away from our problems.&quot;  You think to yourself, do you run away, are you not trying hard enough?  You know that you&#39;re not completely innocent in all of this.
 
 [[I&#39;m not giving up babe.  I just.... I just need some time to think.]]
 
-[[I just don&#39;t know why this has to be so hard.]]</tw-passagedata><tw-passagedata pid="14" name="I need some time to think.  I have a place to crash for a while." tags="" position="811,599" size="100,100">Your partner&#39;s eyes begin to water and their voice cracks &quot;are you coming back?&quot;
+[[I just don&#39;t know why this has to be so hard.]]
+(if: $Look is false)[ (set: $counter to it + 1) ]
+(set: $Look to true)</tw-passagedata><tw-passagedata pid="14" name="I need some time to think.  I have a place to crash for a while." tags="" position="811,599" size="100,100">Your partner&#39;s eyes begin to water and their voice cracks &quot;are you coming back?&quot;
 
 [[Of course, we just need to calm down and think about what we are doing.]]
 
 [[I don&#39;t know.]]
- </tw-passagedata><tw-passagedata pid="15" name="Of course, we just need to calm down and think about what we are doing." tags="" position="801,863" size="100,100">You can almost make out a smile breaking through the stress on their face.  &quot;Ok baby, please... don&#39;t do anything stupid.  I Love you, I&#39;m sorry for last night.  I know we are struggling but we can get through this.&quot;  This is said so softly, kind, and hopeful that you can feel the tension in your stomach subsiding.  You pack your bags and begin to walk towards them in the doorway.  Your partner gently embrace you with open arms.
+ (if: $NTTT is false)[ (set: $counter to it + 1) ]
+(set: $NTTT to true)</tw-passagedata><tw-passagedata pid="15" name="Of course, we just need to calm down and think about what we are doing." tags="" position="801,863" size="100,100">You can almost make out a smile breaking through the stress on their face.  &quot;Ok baby, please... don&#39;t do anything stupid.  I Love you, I&#39;m sorry for last night.  I know we are struggling but we can get through this.&quot;  This is said so softly, kind, and hopeful that you can feel the tension in your stomach subsiding.  You pack your bags and begin to walk towards them in the doorway.  Your partner gently embrace you with open arms.
 
 [[Return the hug]]
 
-[[Shed the embrace -&gt;I don&#39;t know.]]</tw-passagedata><tw-passagedata pid="16" name="I don&#39;t know." tags="" position="1122,997" size="100,100">Immediately you can see a change in their body language as the sadness turns to callousness and they walk away.  
+[[Shed the embrace -&gt;I don&#39;t know.]]
+(if: $Course is false)[ (set: $counter to it + 1) ]
+(set: $Course to true)</tw-passagedata><tw-passagedata pid="16" name="I don&#39;t know." tags="" position="1122,997" size="100,100">Immediately you can see a change in their body language as the sadness turns to callousness and they walk away.  
 
-[[Take a drive]] </tw-passagedata><tw-passagedata pid="17" name="Return the hug" tags="" position="725,1100" size="100,100">You embrace each other.  Feelings of comfort and warmth spread throughout your body.  You pull your head back, ever so slightly and look into their eyes.  You see a rare grin presented on your partners face.  &quot;I need you, I can&#39;t do this without you.&quot;  
+[[Take a drive]] 
+(if: $IDK is false)[ (set: $counter to it + 1) ]
+(set: $IDK to true)</tw-passagedata><tw-passagedata pid="17" name="Return the hug" tags="" position="728,1100" size="100,100">You embrace each other.  Feelings of comfort and warmth spread throughout your body.  You pull your head back, ever so slightly and look into their eyes.  You see a rare grin presented on your partners face.  &quot;I need you, I can&#39;t do this without you.&quot;  
 
 [[Lean in to kiss them(Explicit)]]
 
-[[&quot;Just give me some time.&quot; -&gt;I don&#39;t know.]]</tw-passagedata><tw-passagedata pid="18" name="I&#39;m not giving up babe.  I just.... I just need some time to think." tags="" position="468,753" size="100,100">[[Escaping their gaze you look away, pick up your bag, and head towards the door.-&gt;I need some time to think.  I have a place to crash for a while.]] </tw-passagedata><tw-passagedata pid="19" name="I just don&#39;t know why this has to be so hard." tags="" position="498,1090" size="100,100">&quot;It doesn&#39;t have to be.  Things can be so simple if you just trust me.&quot;  They move closer and slowly wrap their arms around you.  &quot;Can we just move past this?&quot;
+[[&quot;Just give me some time.&quot; -&gt;I don&#39;t know.]]
+(if: $Return is false)[ (set: $counter to it + 1) ]
+(set: $Return to true)</tw-passagedata><tw-passagedata pid="18" name="I&#39;m not giving up babe.  I just.... I just need some time to think." tags="" position="467,753" size="100,100">[[Escaping their gaze you look away, pick up your bag, and head towards the door.-&gt;I need some time to think.  I have a place to crash for a while.]] 
+(if: $INGU is false)[ (set: $counter to it + 1) ]
+(set: $INGU to true)</tw-passagedata><tw-passagedata pid="19" name="I just don&#39;t know why this has to be so hard." tags="" position="498,1090" size="100,100">&quot;It doesn&#39;t have to be.  Things can be so simple if you just trust me.&quot;  They move closer and slowly wrap their arms around you.  &quot;Can we just move past this?&quot;
 
-[[Return the hug]]</tw-passagedata><tw-passagedata pid="20" name="Fall asleep" tags="" position="875,1313" size="100,100">You awake to the sound of early morning traffic.  Light is creeping through the window curtains and a ray directs your gaze to their phone.  You can see a notification for multiple missed messages throughout the night. 
+[[Return the hug]]
+(if: $Just is false)[ (set: $counter to it + 1) ]
+(set: $Just to true)</tw-passagedata><tw-passagedata pid="20" name="Fall asleep" tags="" position="875,1313" size="100,100">You awake to the sound of early morning traffic.  Light is creeping through the window curtains and a ray directs your gaze to their phone.  You can see a notification for multiple missed messages throughout the night. 
 
 [[Ignore the messages.(TRUST)]]
 
-[[Look at the phone.]]</tw-passagedata><tw-passagedata pid="21" name="Ignore the messages.(TRUST)" tags="" position="1891,2192" size="100,100">Refilled with trust from the night before, you fall back asleep.
+[[Look at the phone.]]
+(if: $Fall is false)[ (set: $counter to it + 1) ]
+(set: $Fall to true)</tw-passagedata><tw-passagedata pid="21" name="Ignore the messages.(TRUST)" tags="" position="1891,2192" size="100,100">Refilled with trust from the night before, you fall back asleep.
 
-[[ZZZZ.....]]</tw-passagedata><tw-passagedata pid="22" name="Look at the phone." tags="" position="999,1452" size="100,100">Cautiously you maneuver your arm out from under your partner, trying not to wake them.  Once free you slowly roll out of bed and creep around to their phone.  You take it off the charger and walk into the bathroom locking the door.  &quot;Hey babe, I missed hearing from you today.  I hope all is good and I can&#39;t wait until we are sleeping in the same bed again!&quot;  Your stomach churns and fury smokes from your face.  What is wrong with me? You think to yourself.  I always give people the benefit of a doubt, and I&#39;m always burned! I&#39;m an idiot!
+[[ZZZZ.....]]
+(if: $Ignore is false)[ (set: $counter to it + 1) ]
+(set: $Ignore to true)</tw-passagedata><tw-passagedata pid="22" name="Look at the phone." tags="" position="999,1452" size="100,100">Cautiously you maneuver your arm out from under your partner, trying not to wake them.  Once free you slowly roll out of bed and creep around to their phone.  You take it off the charger and walk into the bathroom locking the door.  &quot;Hey babe, I missed hearing from you today.  I hope all is good and I can&#39;t wait until we are sleeping in the same bed again!&quot;  Your stomach churns and fury smokes from your face.  What is wrong with me? You think to yourself.  I always give people the benefit of a doubt, and I&#39;m always burned! I&#39;m an idiot!
 
 [[Keep looking through the phone.]]
 
 [[Return the phone to the charger, leave your stuff and take a drive -&gt;Take a drive]]
 
-[[Slam, the door.  Wake them up and address this head on.]]</tw-passagedata><tw-passagedata pid="23" name="Keep looking through the phone." tags="" position="847,1602" size="100,100">You find more suggestive text messages and a locked app you have never heard of.
+[[Slam, the door.  Wake them up and address this head on.]]
+(if: $LATP is false)[ (set: $counter to it + 1) ]
+(set: $LATP to true)</tw-passagedata><tw-passagedata pid="23" name="Keep looking through the phone." tags="" position="847,1602" size="100,100">You find more suggestive text messages and a locked app you have never heard of.
 
 [[Google the app.]]
 
-[[]]</tw-passagedata><tw-passagedata pid="24" name="Slam, the door.  Wake them up and address this head on." tags="" position="1147,1602" size="100,100">As the door thunders and rattles the wall, you turn on the lights and toss the phone on the bed.  They awake, confused and threatened.  &quot;What the hell is your problem?&quot;  What&#39;s my problem?  Why don&#39;t you check your phone and tell me what my problem is?  &quot;Oh, so what you don&#39;t trust me know?&quot;  They rattle back as they quickly grab and scroll through their phone.  &quot;What are you so upset about?  This means nothing, were just friends.&quot;
+(if: $KLTP is false)[ (set: $counter to it + 1) ]
+(set: $KLTP to true)</tw-passagedata><tw-passagedata pid="24" name="Slam, the door.  Wake them up and address this head on." tags="" position="1147,1602" size="100,100">As the door thunders and rattles the wall, you turn on the lights and toss the phone on the bed.  They awake, confused and threatened.  &quot;What the hell is your problem?&quot;  What&#39;s my problem?  Why don&#39;t you check your phone and tell me what my problem is?  &quot;Oh, so what you don&#39;t trust me know?&quot;  They rattle back as they quickly grab and scroll through their phone.  &quot;What are you so upset about?  This means nothing, were just friends.&quot;
 
 [[Just friends hugh?]]
 
 [[The hell with you, im done with this.]]
 
-</tw-passagedata><tw-passagedata pid="25" name="Google the app." tags="" position="803,1802" size="100,100">&quot;What are you doing?&quot;  You think to yourself.  I have all the information I need right here.  Screw this I&#39;m done.  You whisper under your breath.
+(if: $SLAM is false)[ (set: $counter to it + 1) ]
+(set: $SLAM to true)</tw-passagedata><tw-passagedata pid="25" name="Google the app." tags="" position="803,1802" size="100,100">&quot;What are you doing?&quot;  You think to yourself.  I have all the information I need right here.  Screw this I&#39;m done.  You whisper under your breath.
 
 [[Return the phone to the charger, leave your stuff and take a drive -&gt;Take a drive]]
 
-[[Slam, the door.  Wake them up and address this head on.]]</tw-passagedata><tw-passagedata pid="26" name="Just friends hugh?" tags="" position="1073,1752" size="100,100">&quot;Oh, like you don&#39;t have tons of people trying to get at you all day.  Just last week you were hanging out with your co-worker that obviously wants to sleep with you!  Your always overreacting, I did nothing wrong.&quot;  You stand there stunned at the statements you just heard.  What do you mean overreacting, the text literally suggested that you two have slept together before?  &quot;Exactly, suggested.  I wasn&#39;t with them!  Why do you always assume the worst!&quot;
+[[Slam, the door.  Wake them up and address this head on.]]
+(if: $GOOGLE is false)[ (set: $counter to it + 1) ]
+(set: $GOOGLE to true)</tw-passagedata><tw-passagedata pid="26" name="Just friends hugh?" tags="" position="1073,1752" size="100,100">&quot;Oh, like you don&#39;t have tons of people trying to get at you all day.  Just last week you were hanging out with your co-worker that obviously wants to sleep with you!  Your always overreacting, I did nothing wrong.&quot;  You stand there stunned at the statements you just heard.  What do you mean overreacting, the text literally suggested that you two have slept together before?  &quot;Exactly, suggested.  I wasn&#39;t with them!  Why do you always assume the worst!&quot;
 
 [[Don&#39;t lie to me!]]
 
-[[The hell with you, im done with this.]]</tw-passagedata><tw-passagedata pid="27" name="The hell with you, im done with this." tags="" position="1370,1779" size="100,100">Fists clenched, you turn around and grab your keys.  Enraged, they scream, &quot;That&#39;s right leave me!  Just like everyone else in my life!&quot;  This statement stops you in your tracks.  You think back to when you first became friends.  You remember all of their stories about abuse, abandonment, and depression.  You feel a heaviness in your heart. 
+[[The hell with you, im done with this.]]
+(if: $JF is false)[ (set: $counter to it + 1) ]
+(set: $JF to true)</tw-passagedata><tw-passagedata pid="27" name="The hell with you, im done with this." tags="" position="1370,1779" size="100,100">Fists clenched, you turn around and grab your keys.  Enraged, they scream, &quot;That&#39;s right leave me!  Just like everyone else in my life!&quot;  This statement stops you in your tracks.  You think back to when you first became friends.  You remember all of their stories about abuse, abandonment, and depression.  You feel a heaviness in your heart. 
 
 [[Walk away and head for the car. -&gt;Take a drive]]
 
-[[Im sorry.]]</tw-passagedata><tw-passagedata pid="28" name="Don&#39;t lie to me!" tags="" position="1003,1911" size="100,100">&quot;I am not lying to you!  It was a long time ago, they are just trying to start trouble.&quot;  They say as their voice cracks and tears build up behind their eyes.  &quot;You mean everything to me!&quot;  They reach out to you, seeking solace in your arms.
+[[Im sorry.]]
+(if: $Hell is false)[ (set: $counter to it + 1) ]
+(set: $Hell to true)</tw-passagedata><tw-passagedata pid="28" name="Don&#39;t lie to me!" tags="" position="1003,1910" size="100,100">&quot;I am not lying to you!  It was a long time ago, they are just trying to start trouble.&quot;  They say as their voice cracks and tears build up behind their eyes.  &quot;You mean everything to me!&quot;  They reach out to you, seeking solace in your arms.
 
 [[So you admit it, there is something between you two.]]
 
-[[The hell with you, im done with this.]]</tw-passagedata><tw-passagedata pid="29" name="I have had it with this relationship.  Nothing ever changes!" tags="" position="1702,501" size="100,100">On point and in unison you hear, &quot;SHHHUUTTTT UPPP!&quot;  You look at your friends as they slide you another shot.  &quot;You are a broken record!  You unwind with us for a bit and we will talk about it after the tequila kicks in.&quot;
+[[The hell with you, im done with this.]]
+(if: $LIE is false)[ (set: $counter to it + 1) ]
+(set: $LIE to true)</tw-passagedata><tw-passagedata pid="29" name="I have had it with this relationship.  Nothing ever changes!" tags="" position="1702,501" size="100,100">On point and in unison you hear, &quot;SHHHUUTTTT UPPP!&quot;  You look at your friends as they slide you another shot.  &quot;You are a broken record!  You unwind with us for a bit and we will talk about it after the tequila kicks in.&quot;
 
-[[Shut up and drink.-&gt;Cheers!!!]]</tw-passagedata><tw-passagedata pid="30" name="Don&#39;t even worry about it.  I am just happy to be here chilling with yall." tags="" position="1506,211" size="100,100">&quot;Good, cause we don&#39;t wanna hear about it.&quot;  Darnell says with a big grin.  &quot;We haven&#39;t seen you in ages and tonight we are celebrating!&quot;
+[[Shut up and drink.-&gt;Cheers!!!]]
+(if: $Had is false)[ (set: $counter to it + 1) ]
+(set: $Had to true)</tw-passagedata><tw-passagedata pid="30" name="Don&#39;t even worry about it.  I am just happy to be here chilling with yall." tags="" position="1504,212" size="100,100">&quot;Good, cause we don&#39;t wanna hear about it.&quot;  Darnell says with a big grin.  &quot;We haven&#39;t seen you in ages and tonight we are celebrating!&quot;
 
-[[Cheers!!!]]</tw-passagedata><tw-passagedata pid="31" name="Cheers!!!" tags="" position="1701,102" size="100,100">Two hours later...
+[[Cheers!!!]]
+
+(if: $Dont is false)[ (set: $counter to it + 1) ]
+(set: $Dont to true)</tw-passagedata><tw-passagedata pid="31" name="Cheers!!!" tags="" position="1701,102" size="100,100">Two hours later...
 
 You clink glasses as you and your lifelong friends throw back shot after shot.  The camaraderie of your friends mixed with the alcohol and music, relaxes you.  You begin to open up.  Why are relationships so hard?  &quot;Well, most of them are.  I&#39;ll be honest though, this debacle that you got yourself into, it&#39;s like the Vietnam war.  You know you shouldn&#39;t be there, but your still dodging napalm anyway!&quot;  Tori says with a smile on her face.  Darnell erupts with laughter. &quot;Bawhahahaha!  You know she speaks the truth!&quot;
 
 [[Yeah, you have a point.-&gt;Screw you guys!]]
 
-[[Screw you guys!]]</tw-passagedata><tw-passagedata pid="32" name="So you admit it, there is something between you two." tags="" position="1125,2093" size="100,100">&quot;Don&#39;t act like you&#39;re perfect!  If you would have come home that night, none of this would have happened.&quot;  Are they really still bringing this up?  You say to yourself.
+[[Screw you guys!]]
+(if: $Cheers is false)[ (set: $counter to it + 1) ]
+(set: $Cheers to true)</tw-passagedata><tw-passagedata pid="32" name="So you admit it, there is something between you two." tags="" position="1125,2093" size="100,100">&quot;Don&#39;t act like you&#39;re perfect!  If you would have come home that night, none of this would have happened.&quot;  Are they really still bringing this up?  You say to yourself.
 
 [[That was 3 months ago, and you know Darnell was going through a rough time.  The only person out of our entire friend group, that wasn&#39;t there, was you!]]
 
-[[The hell with you, im done with this.]]</tw-passagedata><tw-passagedata pid="33" name="That was 3 months ago, and you know Darnell was going through a rough time.  The only person out of our entire friend group, that wasn&#39;t there, was you!" tags="" position="1278,2129" size="100,100">&quot;Yeah and I will never know what happened that night, yall are always leaving me out!&quot;  Honey.... You were invited, you made the choice to stay home, you made the choice to reach out to someone else.  &quot;They were there for me and you weren&#39;t!&quot;  You slowly look down at the floor and shake your head.
+[[The hell with you, im done with this.]]
+(if: $Admit is false)[ (set: $counter to it + 1) ]
+(set: $Admit to true)</tw-passagedata><tw-passagedata pid="33" name="That was 3 months ago, and you know Darnell was going through a rough time.  The only person out of our entire friend group, that wasn&#39;t there, was you!" tags="" position="1278,2129" size="100,100">&quot;Yeah and I will never know what happened that night, yall are always leaving me out!&quot;  Honey.... You were invited, you made the choice to stay home, you made the choice to reach out to someone else.  &quot;They were there for me and you weren&#39;t!&quot;  You slowly look down at the floor and shake your head.
 
 [[Im sorry.]]
 
-[[Look, I gotta get some air.  I will be back later-&gt;Take a drive]]</tw-passagedata><tw-passagedata pid="34" name="Im sorry." tags="" position="1502,2203" size="100,100">&quot;Thank you boo, I&#39;m sorry too.  I hate fighting with you.  Now can we just forget about this and have some breakfast?  You stay in bed and I will bring it to you, but someone is getting dessert with their breakfast this morning!&quot;  They lay their phone down on the table, &quot;I&#39;m not hiding anything.  You can finish going through it if you want.&quot;  They wink at you, jump across the bed to give you a giant hug, and skip off to make breakfast.
+[[Look, I gotta get some air.  I will be back later-&gt;Take a drive]]
+(if: $3m is false)[ (set: $counter to it + 1) ]
+(set: $3m to true)</tw-passagedata><tw-passagedata pid="34" name="Im sorry." tags="" position="1502,2203" size="100,100">&quot;Thank you boo, I&#39;m sorry too.  I hate fighting with you.  Now can we just forget about this and have some breakfast?  You stay in bed and I will bring it to you, but someone is getting dessert with their breakfast this morning!&quot;  They lay their phone down on the table, &quot;I&#39;m not hiding anything.  You can finish going through it if you want.&quot;  They wink at you, jump across the bed to give you a giant hug, and skip off to make breakfast.
 
-[[Lay back down and rest.-&gt;ZZZZ.....]]</tw-passagedata><tw-passagedata pid="35" name="ZZZZ....." tags="" position="1912,2334" size="100,100">&quot;GOOOODDDD MORINING, Here is your breakfast!&quot;  You hear as you wipe the crust from your eyes.  Thank you this is amazing!  &quot;Don&#39;t eat to much, I have a special dessert for you too.&quot;  They say, with a mischievous wink.  You smile.  Things are good.
+[[Lay back down and rest.-&gt;ZZZZ.....]]
+(if: $Sorry is false)[ (set: $counter to it + 1) ]
+(set: $Sorry to true)</tw-passagedata><tw-passagedata pid="35" name="ZZZZ....." tags="" position="1912,2334" size="100,100">&quot;GOOOODDDD MORINING, Here is your breakfast!&quot;  You hear as you wipe the crust from your eyes.  Thank you this is amazing!  &quot;Don&#39;t eat to much, I have a special dessert for you too.&quot;  They say, with a mischievous wink.  You smile.  Things are good.
 
-[[Enjoy breakfast in bed.]]</tw-passagedata><tw-passagedata pid="36" name="Enjoy breakfast in bed." tags="" position="1907,2480" size="100,100">Later in the afternoon...
+[[Enjoy breakfast in bed.]]
+(if: $ZZZ is false)[ (set: $counter to it + 1) ]
+(set: $ZZZ to true)</tw-passagedata><tw-passagedata pid="36" name="Enjoy breakfast in bed." tags="" position="1907,2480" size="100,100">Later in the afternoon...
 
 You finish drying off and begin to change into some clothes.  What do you want to do tonight?  You ask your partner, who is getting ready as well.  &quot;I don&#39;t know babe, I heard there is a new restaurant that just opened up downtown.&quot;  You nod in agreement.  That sounds good, I&#39;m starving.  You each give one another a once over, high five playfully, and head out the door.
 
-[[Head downton.]]</tw-passagedata><tw-passagedata pid="37" name="Head downton." tags="" position="2104,2485" size="100,100">Driving down the highway, you roll the windows down.  The air playfully bounces your hair around as you look over and see your baby smiling back at you.  &quot;This weather is so nice, I love fall time.&quot;  They say, as they grab your hand.  Me too.  You respond back as you turn on the radio.  A particular song begins to play.  Didn&#39;t we hear that, the first night we met?, you mention to them. &quot;Yeah, that&#39;s right!  When we were at your friends party.  How is Darnell anyway?&quot;  He is great actually.  He got a promotion and is loving life.  You know, if you would hang around them more, you wouldn&#39;t feel so out of place all the time.  Slowly they remove their hand from yours and tense up.  &quot;You know I have anxiety.&quot;  I know but....  You are quickly interrupted.  &quot;Look can we just not talk about any of that I just want to have a good time tonight.&quot;  Ok, no problem babe.  You say kindly.  The awkward silence subsides slowly, and you both arrive downtown.  &quot;We might have to wait to get a table.  Do you wanna grab a daiquiri, and sip on it while we wait?&quot;  They ask.
+[[Head downton.]]
+(if: $ENJOY is false)[ (set: $counter to it + 1) ]
+(set: $ENJOY to true)</tw-passagedata><tw-passagedata pid="37" name="Head downton." tags="" position="2104,2485" size="100,100">Driving down the highway, you roll the windows down.  The air playfully bounces your hair around as you look over and see your baby smiling back at you.  &quot;This weather is so nice, I love fall time.&quot;  They say, as they grab your hand.  Me too.  You respond back as you turn on the radio.  A particular song begins to play.  Didn&#39;t we hear that, the first night we met?, you mention to them. &quot;Yeah, that&#39;s right!  When we were at your friends party.  How is Darnell anyway?&quot;  He is great actually.  He got a promotion and is loving life.  You know, if you would hang around them more, you wouldn&#39;t feel so out of place all the time.  Slowly they remove their hand from yours and tense up.  &quot;You know I have anxiety.&quot;  I know but....  You are quickly interrupted.  &quot;Look can we just not talk about any of that I just want to have a good time tonight.&quot;  Ok, no problem babe.  You say kindly.  The awkward silence subsides slowly, and you both arrive downtown.  &quot;We might have to wait to get a table.  Do you wanna grab a daiquiri, and sip on it while we wait?&quot;  They ask.
 
 [[&quot;Yeah, that sounds good actually.&quot; -&gt; Get a daiquiri.]]
 
-[[&quot;No.  My stomach is about to eat itself.&quot; -&gt; Head to the restaurant.]]</tw-passagedata><tw-passagedata pid="38" name=" Get a daiquiri." tags="" position="2000,2702" size="100,100">You both manage to squeeze into a crowded daiquiri shop and order some drinks.  &quot;I needed this.&quot;  Your partner says with a grin, as they take the straw outta their lips.  Me too.  You both people watch from the outside of the bar, and jokingly critique the behavior of everyone you see.  Tonight seems to be ok, you say to yourself.
+[[&quot;No.  My stomach is about to eat itself.&quot; -&gt; Head to the restaurant.]]
+(if: $DOWN is false)[ (set: $counter to it + 1) ]
+(set: $DOWN to true)</tw-passagedata><tw-passagedata pid="38" name=" Get a daiquiri." tags="" position="2000,2702" size="100,100">You both manage to squeeze into a crowded daiquiri shop and order some drinks.  &quot;I needed this.&quot;  Your partner says with a grin, as they take the straw outta their lips.  Me too.  You both people watch from the outside of the bar, and jokingly critique the behavior of everyone you see.  Tonight seems to be ok, you say to yourself.
 
-[[ Head to the restaurant.]]</tw-passagedata><tw-passagedata pid="39" name=" Head to the restaurant." tags="" position="2300,2493" size="100,100">&quot;Ok, I&#39;m hungry too.  I will just get a drink at the bar while we wait.&quot;  You are surprised by the calmness of the response after the car rides sudden turn in the atmosphere.  You two begin to walk hand in hand.  Where did you say this spot was at?, you ask them.  &quot;Lemme look it up again.  Ok, so it&#39;s on the corner of Apricot and River.  We&#39;re heading the right way.&quot;  When you hear the name River your sense of fight or flight kicks in.  Oh...ok.  You stutter, trying to catch it before they notice.  &quot;What was that?  You thinking about your ex again?&quot;  Nah, it was just surprising is all.  &quot;Mmmmhmmmm....&quot; They respond with, as you continue on your path to the restaurant.  Finally, you come to the corner the destination is located on. Your partner looks up at the street signs, pauses as if they are trying to contain themselves, and unleashes!  &quot;Look at that, your ex is coming between us again!  We are on date night and you can&#39;t even stop thinking about them!&quot;  Jesus, can we not do this in public right now?  You rattle off, as your head is racing about how bad this scene could possibly get.  &quot;Oh no, were gonna do this!&quot;  They say arms spread and spinning around.  &quot;I don&#39;t care who sees this.  I want everyone here to know how much you still care for someone that doesn&#39;t love you and probably never did!&quot;
+[[ Head to the restaurant.]]
+(if: $DAQ is false)[ (set: $counter to it + 1) ]
+(set: $DAQ to true)</tw-passagedata><tw-passagedata pid="39" name=" Head to the restaurant." tags="" position="2300,2493" size="100,100">&quot;Ok, I&#39;m hungry too.  I will just get a drink at the bar while we wait.&quot;  You are surprised by the calmness of the response after the car rides sudden turn in the atmosphere.  You two begin to walk hand in hand.  Where did you say this spot was at?, you ask them.  &quot;Lemme look it up again.  Ok, so it&#39;s on the corner of Apricot and River.  We&#39;re heading the right way.&quot;  When you hear the name River your sense of fight or flight kicks in.  Oh...ok.  You stutter, trying to catch it before they notice.  &quot;What was that?  You thinking about your ex again?&quot;  Nah, it was just surprising is all.  &quot;Mmmmhmmmm....&quot; They respond with, as you continue on your path to the restaurant.  Finally, you come to the corner the destination is located on. Your partner looks up at the street signs, pauses as if they are trying to contain themselves, and unleashes!  &quot;Look at that, your ex is coming between us again!  We are on date night and you can&#39;t even stop thinking about them!&quot;  Jesus, can we not do this in public right now?  You rattle off, as your head is racing about how bad this scene could possibly get.  &quot;Oh no, were gonna do this!&quot;  They say arms spread and spinning around.  &quot;I don&#39;t care who sees this.  I want everyone here to know how much you still care for someone that doesn&#39;t love you and probably never did!&quot;
 
 [[Call an uber.]]
 
-[[Brace for impact.]]</tw-passagedata><tw-passagedata pid="40" name="Call an uber." tags="" position="2424,2243" size="100,100">Look, I&#39;m not doing this here and I&#39;m not riding with you.  I&#39;ll see you at the house.  You throw them the keys and walk off in the opposite direction.  That was embarrassing.  You think to yourself as you pull up Uber on your phone.  A few minutes pass by as you reflect on the night and the dynamics of the relationship.  Do you really wanna go home?  You can always go meet up with your friends at the bar and avoid the problems at home.  Your driver pulls up.
+[[Brace for impact.]]
+(if: $HEAD is false)[ (set: $counter to it + 1) ]
+(set: $HEAD to true)</tw-passagedata><tw-passagedata pid="40" name="Call an uber." tags="" position="2424,2243" size="100,100">Look, I&#39;m not doing this here and I&#39;m not riding with you.  I&#39;ll see you at the house.  You throw them the keys and walk off in the opposite direction.  That was embarrassing.  You think to yourself as you pull up Uber on your phone.  A few minutes pass by as you reflect on the night and the dynamics of the relationship.  Do you really wanna go home?  You can always go meet up with your friends at the bar and avoid the problems at home.  Your driver pulls up.
 
 [[&quot;Change of plans driver, take me to the bar!&quot;-&gt;&quot;Change of plans friend.&quot;]]
 
-[[Ride home in silence.]]</tw-passagedata><tw-passagedata pid="41" name="Brace for impact." tags="" position="2500,2595" size="100,100">&quot;As soon as I said their name, you started acting funny and don&#39;t you deny it!&quot;  They scream out, as people gather and begin to look on.  Your mind races, you do still have feelings for your ex but that was a lifetime ago. The only reason I changed my demeanor is because of this right here.  You always freak out over the smallest thing!  Can&#39;t you see that your actions cause my mind to go into defense mode.  Their eyes widen, &quot;So once again its my fault?  How convenient for you.  When things get real, you blame me or tuck your tail and run!&quot;  At this point, you notice an entire crowd has formed around you and that you two are the entertainment for the night.
+[[Ride home in silence.]]
+(if: $UBER is false)[ (set: $counter to it + 1) ]
+(set: $UBER to true)</tw-passagedata><tw-passagedata pid="41" name="Brace for impact." tags="" position="2500,2595" size="100,100">&quot;As soon as I said their name, you started acting funny and don&#39;t you deny it!&quot;  They scream out, as people gather and begin to look on.  Your mind races, you do still have feelings for your ex but that was a lifetime ago. The only reason I changed my demeanor is because of this right here.  You always freak out over the smallest thing!  Can&#39;t you see that your actions cause my mind to go into defense mode.  Their eyes widen, &quot;So once again its my fault?  How convenient for you.  When things get real, you blame me or tuck your tail and run!&quot;  At this point, you notice an entire crowd has formed around you and that you two are the entertainment for the night.
 
 [[Hash it out in public.]]
 
-[[Tuck your tail and run. (Call an Uber.) -&gt;Call an uber.]]</tw-passagedata><tw-passagedata pid="42" name="Hash it out in public." tags="" position="2304,2672" size="100,100">You wanna have the fight?  Fine, let&#39;s have the fight!  You yell, as you get cheered on from the onlookers.  Every single day I am with you, I feel like I am walking through a minefield.  I talk to God on the regular, just to ask for us not to fight, so I can sleep in peace!  That&#39;s not normal!  Like clockwork your partner flips a switch.  Their eyes water and their voice calms down to a whimper.  &quot;Can you just calm down, so we can go home and have this conversation in private.&quot;  Stunned, you reply...
+[[Tuck your tail and run. (Call an Uber.) -&gt;Call an uber.]]
+
+(if: $Brace is false)[ (set: $counter to it + 1) ]
+(set: $Brace to true)</tw-passagedata><tw-passagedata pid="42" name="Hash it out in public." tags="" position="2304,2672" size="100,100">You wanna have the fight?  Fine, let&#39;s have the fight!  You yell, as you get cheered on from the onlookers.  Every single day I am with you, I feel like I am walking through a minefield.  I talk to God on the regular, just to ask for us not to fight, so I can sleep in peace!  That&#39;s not normal!  Like clockwork your partner flips a switch.  Their eyes water and their voice calms down to a whimper.  &quot;Can you just calm down, so we can go home and have this conversation in private.&quot;  Stunned, you reply...
 
 [[&quot;Yeah, lets go home.&quot;]]
 
-[[&quot;You do your thing babe.  I&#39;m gonna call an Uber.  I cant be around you right now.&quot;-&gt;Call an uber.]]</tw-passagedata><tw-passagedata pid="43" name="&quot;Yeah, lets go home.&quot;" tags="" position="2227,2849" size="100,100">Exhausted, embarrassed, and confused you walk back to the car.  Your partner follows behind you as you hear an applause from a few assholes in the crowd.  You both get in and head to the house.  The drive begins quietly, but by the time you arrive home, you are both screaming loud enough to wake the neighbors.
+[[&quot;You do your thing babe.  I&#39;m gonna call an Uber.  I cant be around you right now.&quot;-&gt;Call an uber.]]
+(if: $HASH is false)[ (set: $counter to it + 1) ]
+(set: $HASH to true)</tw-passagedata><tw-passagedata pid="43" name="&quot;Yeah, lets go home.&quot;" tags="" position="2227,2849" size="100,100">Exhausted, embarrassed, and confused you walk back to the car.  Your partner follows behind you as you hear an applause from a few assholes in the crowd.  You both get in and head to the house.  The drive begins quietly, but by the time you arrive home, you are both screaming loud enough to wake the neighbors.
 
-[[Home sweet home.-&gt;Take a deep breath.]]</tw-passagedata><tw-passagedata pid="44" name="&quot;Change of plans friend.&quot;" tags="" position="1334,716" size="100,100">The uber pulls up to the bar.  You get out and light a cigarette.  &quot;Ok, get yourself together.  You are going to have a good time tonight.&quot;  After a few moments of self motivation you flick your cigarette into the gravel and head towards the door.  &quot;HHHHHHEEEEEEEYYYYYYYOOOOOOOO!!!!!&quot; Thank god, your people are here!  You walk up to the bar and are happily embraced.  &quot;This night keeps getting better.&quot; Darnell says as he waves over the bartender.  &quot;Three shots of El&#39;Jimador please.&quot;
+[[Home sweet home.-&gt;Take a deep breath.]]
+(if: $YEAH is false)[ (set: $counter to it + 1) ]
+(set: $YEAH to true)</tw-passagedata><tw-passagedata pid="44" name="&quot;Change of plans friend.&quot;" tags="" position="1334,716" size="100,100">(set: $pathC2 to true)
+The uber pulls up to the bar.  You get out and light a cigarette.  &quot;Ok, get yourself together.  You are going to have a good time tonight.&quot;  After a few moments of self motivation you flick your cigarette into the gravel and head towards the door.  &quot;HHHHHHEEEEEEEYYYYYYYOOOOOOOO!!!!!&quot; Thank god, your people are here!  You walk up to the bar and are happily embraced.  &quot;This night keeps getting better.&quot; Darnell says as he waves over the bartender.  &quot;Three shots of El&#39;Jimador please.&quot;
 
 [[Dude, I don&#39;t feel like drinking tonight.]]
 
-[[Just what the doctor ordered!]]</tw-passagedata><tw-passagedata pid="45" name="Call your dad." tags="" position="1054,101" size="100,100">&quot;Hey young&#39;n, what you got going on tonight!&quot;  He says, in a jovial tone.  &quot;Nothing much, just sitting out by the lake.&quot;  You respond, slightly less enthusiastic.  &quot;Uh oh, trouble in paradise?&quot;  Recognizing your tone, he can already tell something is wrong.  &quot;You know it&#39;s mine and your mom&#39;s fault right?&quot;  You pause for a min, &quot;What are you talking about Dad?&quot;  &quot;What am I talking about?&quot;, he responds with some laughter in his voice.  &quot;Im talking about your constant need to fix things and people.&quot;  You ponder his statement for a moment.  We&#39;ll I do like to see the best in people.  He laughs again and you can imagine him shaking his head at the same time.  &quot;I&#39;m sorry bud, im sorry me and your mom&#39;s divorce influenced you in this way.&quot;  Wow, this is outta left field you think to yourself.  Dad, you guys were great parents.  I turned out fine.  You say a little more cheerful.  &quot;I know that, but it still affected you.  After we divorced you were always trying to fix things on both ends.  Me, your mom, and your little sister.  You have a good heart, and I love you even more for it, but other people&#39;s happiness is not your responsibility.  You gotta make decisions that put you in a good place and keep a smile on your face.&quot;
+[[Just what the doctor ordered!]]
+(if: $Change is false)[ (set: $counter to it + 1) ]
+(set: $Change to true)</tw-passagedata><tw-passagedata pid="45" name="Call your dad." tags="" position="1054,101" size="100,100">&quot;Hey young&#39;n, what you got going on tonight!&quot;  He says, in a jovial tone.  &quot;Nothing much, just sitting out by the lake.&quot;  You respond, slightly less enthusiastic.  &quot;Uh oh, trouble in paradise?&quot;  Recognizing your tone, he can already tell something is wrong.  &quot;You know it&#39;s mine and your mom&#39;s fault right?&quot;  You pause for a min, &quot;What are you talking about Dad?&quot;  &quot;What am I talking about?&quot;, he responds with some laughter in his voice.  &quot;Im talking about your constant need to fix things and people.&quot;  You ponder his statement for a moment.  We&#39;ll I do like to see the best in people.  He laughs again and you can imagine him shaking his head at the same time.  &quot;I&#39;m sorry bud, im sorry me and your mom&#39;s divorce influenced you in this way.&quot;  Wow, this is outta left field you think to yourself.  Dad, you guys were great parents.  I turned out fine.  You say a little more cheerful.  &quot;I know that, but it still affected you.  After we divorced you were always trying to fix things on both ends.  Me, your mom, and your little sister.  You have a good heart, and I love you even more for it, but other people&#39;s happiness is not your responsibility.  You gotta make decisions that put you in a good place and keep a smile on your face.&quot;
 
 [[Keep listening.]]
-</tw-passagedata><tw-passagedata pid="46" name="Keep listening." tags="" position="1237,29" size="100,100">&quot;You&#39;re a good kid, but i&#39;ll be honest, you haven&#39;t seemed really happy in a long time.  I wanna see that side of you again, you know.&quot;  With all of these words hitting close to home, you lean back on the bench and look up at the sky.  Dad.....we have bills and stuff tied up together, plus I dunno what they are gonna do.  It&#39;s so complicated right now.  I dunno what to do.  &quot;Leave!&quot;  He says with a bit of fieriness.  &quot;Don&#39;t worry about the bills, that will all work itself out.  Who cares about what yall own together, those are just material things.  Just roll outta there and create a life for yourself.  Do it now before you two mess around and end up getting pregnant.&quot;  Hahahahaha, Dad we&#39;re careful about that.  &quot;Never can be too careful&quot;, he says laughing again.  Look I know you care for them, hell you love everyone.  But, you too are in the same toxic loop me and your mom were in.  That type of situation will wear you down and you might not even recognize yourself when it&#39;s over with.&quot;  Throughout this entire conversation you have had memories flood your head confirming everything your Dad has said.  You know what Dad, your pretty smart for an old man.  &quot;Yeah I know, and you still don&#39;t listen&quot;, he says with a chuckle.  &quot;Look your stepmom just laid down, and she was giving me that look earlier.  I think I might get lucky so im gonna get off here.&quot;  Come on Dad, I don&#39;t wanna hear that!  &quot;Hahaha!  Look, you always gotta spot here on the couch.  Do what you wanna do.  Just remember, I love you and you can&#39;t fix everyone.&quot;  I love you too Dad.  You too have fun.  &quot;We will!&quot;  He says as he hangs up the phone.
+(if: $DAD is false)[ (set: $counter to it + 1) ]
+(set: $DAD to true)</tw-passagedata><tw-passagedata pid="46" name="Keep listening." tags="" position="1237,29" size="100,100">&quot;You&#39;re a good kid, but i&#39;ll be honest, you haven&#39;t seemed really happy in a long time.  I wanna see that side of you again, you know.&quot;  With all of these words hitting close to home, you lean back on the bench and look up at the sky.  Dad.....we have bills and stuff tied up together, plus I dunno what they are gonna do.  It&#39;s so complicated right now.  I dunno what to do.  &quot;Leave!&quot;  He says with a bit of fieriness.  &quot;Don&#39;t worry about the bills, that will all work itself out.  Who cares about what yall own together, those are just material things.  Just roll outta there and create a life for yourself.  Do it now before you two mess around and end up getting pregnant.&quot;  Hahahahaha, Dad we&#39;re careful about that.  &quot;Never can be too careful&quot;, he says laughing again.  Look I know you care for them, hell you love everyone.  But, you too are in the same toxic loop me and your mom were in.  That type of situation will wear you down and you might not even recognize yourself when it&#39;s over with.&quot;  Throughout this entire conversation you have had memories flood your head confirming everything your Dad has said.  You know what Dad, your pretty smart for an old man.  &quot;Yeah I know, and you still don&#39;t listen&quot;, he says with a chuckle.  &quot;Look your stepmom just laid down, and she was giving me that look earlier.  I think I might get lucky so im gonna get off here.&quot;  Come on Dad, I don&#39;t wanna hear that!  &quot;Hahaha!  Look, you always gotta spot here on the couch.  Do what you wanna do.  Just remember, I love you and you can&#39;t fix everyone.&quot;  I love you too Dad.  You too have fun.  &quot;We will!&quot;  He says as he hangs up the phone.
 
-[[Contemplate.]]</tw-passagedata><tw-passagedata pid="47" name="Contemplate." tags="" position="1302,212" size="100,100">You watch the sun disappear over the water line.  As your eyes begin to adjust, you are startled by the sudden vibration of your phone.  You reach into your pocket and pull it out.  Looking at the caller ID your stomach drops.  I know I wasn&#39;t gonna get off this easy you think to yourself.  What do you do?
+[[Contemplate.]]
+(if: $Listen is false)[ (set: $counter to it + 1) ]
+(set: $Listen to true)</tw-passagedata><tw-passagedata pid="47" name="Contemplate." tags="" position="1302,212" size="100,100">You watch the sun disappear over the water line.  As your eyes begin to adjust, you are startled by the sudden vibration of your phone.  You reach into your pocket and pull it out.  Looking at the caller ID your stomach drops.  I know I wasn&#39;t gonna get off this easy you think to yourself.  What do you do?
 
 [[Take a drive]]
 
-[[Answer the phone.]]</tw-passagedata><tw-passagedata pid="48" name="Look, we have been on the rocks for a while now.  Maybe we could use a break." tags="" position="2448,1434" size="100,100">&quot;This is just like you.  We have a fight, you get frustrated and bail.&quot;  Babe, I just don&#39;t want us to be stressed and fighting anymore.  You say with a bit more compassion in your voice.  &quot;You think I do?  I want it to be like it was in the beginning.  When we got along.&quot;  That would be nice.  I just don&#39;t know how to get back there again.  &quot;You can start by saying your sorry.&quot;
+[[Answer the phone.]]
+(if: $Cont is false)[ (set: $counter to it + 1) ]
+(set: $Cont to true)</tw-passagedata><tw-passagedata pid="48" name="Look, we have been on the rocks for a while now.  Maybe we could use a break." tags="" position="2448,1434" size="100,100">&quot;This is just like you.  We have a fight, you get frustrated and bail.&quot;  Babe, I just don&#39;t want us to be stressed and fighting anymore.  You say with a bit more compassion in your voice.  &quot;You think I do?  I want it to be like it was in the beginning.  When we got along.&quot;  That would be nice.  I just don&#39;t know how to get back there again.  &quot;You can start by saying your sorry.&quot;
 
 [[Really, you think I need to say im sorry?-&gt;I over react?!]]
 
-[[You&#39;re right, I&#39;m sorry.]]</tw-passagedata><tw-passagedata pid="49" name="I over react?!" tags="" position="2055,1446" size="100,100">&quot;Yes, you!  Last night was going fine and then you blew up on me.  Maybe, I said some things that rubbed you the wrong way.  But, you acted like an asshole.&quot;  Really?  You ask with a sarcastic tone.  Well if that is how you see things then we really don&#39;t need to be together.
+[[You&#39;re right, I&#39;m sorry.]]
+(if: $Rocks is false)[ (set: $counter to it + 1) ]
+(set: $Rocks to true)</tw-passagedata><tw-passagedata pid="49" name="I over react?!" tags="" position="2056,1445" size="100,100">&quot;Yes, you!  Last night was going fine and then you blew up on me.  Maybe, I said some things that rubbed you the wrong way.  But, you acted like an asshole.&quot;  Really?  You ask with a sarcastic tone.  Well if that is how you see things then we really don&#39;t need to be together.
 
-[[Gather your things.]]</tw-passagedata><tw-passagedata pid="50" name="Gather your things." tags="" position="1969,1148" size="100,100">You retreat to the bedroom.  I gotta get outta this place you silently tell yourself.  You grab your suitcase and start throwing clothes and any items of sentiment into it.  You come across a picture of you and your partner when times were good.  Shaking your head you make the decision to set it aside.  A good amount of time has passed and you have finished packing.  You look around at the items your leaving and decide that its best just to leave without them.  You zip up your suitcase and....
+[[Gather your things.]]
+(if: $REACT is false)[ (set: $counter to it + 1) ]
+(set: $REACT to true)</tw-passagedata><tw-passagedata pid="50" name="Gather your things." tags="" position="1969,1148" size="100,100">You retreat to the bedroom.  I gotta get outta this place you silently tell yourself.  You grab your suitcase and start throwing clothes and any items of sentiment into it.  You come across a picture of you and your partner when times were good.  Shaking your head you make the decision to set it aside.  A good amount of time has passed and you have finished packing.  You look around at the items your leaving and decide that its best just to leave without them.  You zip up your suitcase and....
 
-[[Turn around]]</tw-passagedata><tw-passagedata pid="51" name="You&#39;re right, I&#39;m sorry." tags="" position="2602,1599" size="100,100">You can see a switch flip in their demeanor.  They smile and walk over to you, &quot;I love you so much, I&#39;m sorry too baby.&quot;  You both put your arms around each other, and let go of all the negative emotion.  &quot;Can we just forget about this and salvage what&#39;s left of this day?&quot;  That sounds great you say, with a smile on your face.  &quot;You want to join me in the shower and wash away all our bullshit?&quot;  They stare at you lovingly.
+[[Turn around]]
+(if: $Gather is false)[ (set: $counter to it + 1) ]
+(set: $Gather to true)</tw-passagedata><tw-passagedata pid="51" name="You&#39;re right, I&#39;m sorry." tags="" position="2602,1599" size="100,100">You can see a switch flip in their demeanor.  They smile and walk over to you, &quot;I love you so much, I&#39;m sorry too baby.&quot;  You both put your arms around each other, and let go of all the negative emotion.  &quot;Can we just forget about this and salvage what&#39;s left of this day?&quot;  That sounds great you say, with a smile on your face.  &quot;You want to join me in the shower and wash away all our bullshit?&quot;  They stare at you lovingly.
 
-[[Absolutely.-&gt;Enjoy breakfast in bed.]]</tw-passagedata><tw-passagedata pid="52" name="(Ignore the bait)  You&#39;re right, we could use some time apart." tags="" position="2420,1281" size="100,100">&quot;You&#39;re not even going to fight for us?!&quot;  They say as their eyes water.  &quot;After everything we have been through, you&#39;re just gonna give up!?&quot;  Slightly confused you respond with.
+[[Absolutely.-&gt;Enjoy breakfast in bed.]]
+(if: $Right is false)[ (set: $counter to it + 1) ]
+(set: $Right to true)</tw-passagedata><tw-passagedata pid="52" name="(Ignore the bait)  You&#39;re right, we could use some time apart." tags="" position="2421,1281" size="100,100">&quot;You&#39;re not even going to fight for us?!&quot;  They say as their eyes water.  &quot;After everything we have been through, you&#39;re just gonna give up!?&quot;  Slightly confused you respond with.
 
 [[I thought... this was what you wanted?  I was just trying to make this easier.  What is it you want?!]]
 
-[[This is ridiculous, look im gonna go pack my things.-&gt;Gather your things.]]</tw-passagedata><tw-passagedata pid="53" name="I thought... this was what you wanted?  I was just trying to make this easier.  What is it you want?!" tags="" position="2616,1333" size="100,100">&quot;I want you to say that you love me and make all of this go away!&quot;  They sob into their hands as they bend at the knees and begin to show vulnerability.
+[[This is ridiculous, look im gonna go pack my things.-&gt;Gather your things.]]
+(if: $Bait is false)[ (set: $counter to it + 1) ]
+(set: $Bait to true)</tw-passagedata><tw-passagedata pid="53" name="I thought... this was what you wanted?  I was just trying to make this easier.  What is it you want?!" tags="" position="2616,1333" size="100,100">&quot;I want you to say that you love me and make all of this go away!&quot;  They sob into their hands as they bend at the knees and begin to show vulnerability.
 
 [[Of course I love you.  Im sorry for last night, im sorry for everything I have ever done that has hurt you.  I do want this to work, babe.-&gt;You&#39;re right, I&#39;m sorry.]]
 
-[[I do love you but we are not happy.  I think taking a break is a good idea, for the both of us.  (Head to the bedroom and pack)-&gt;Gather your things.]]</tw-passagedata><tw-passagedata pid="54" name="Screw you guys!" tags="" position="1905,19" size="100,100">&quot;Look we love you.  We have your back no matter what.  10 years from now we could be having this same conversation and we will still love you.&quot;  Darnell says, as he shakes his head.  &quot;He&#39;s right.  You&#39;re gonna make your own decisions.  Just make sure your making them for yourself.  Get YOU where you need to be.  Then when the time comes, maybe your next relationship will resemble a playground scuffle instead of a national tragedy.&quot;  You look at Tori and smirk as she gives you a playful hug.  I love yall too.
+[[I do love you but we are not happy.  I think taking a break is a good idea, for the both of us.  (Head to the bedroom and pack)-&gt;Gather your things.]]
 
-[[Close out your tab.]]</tw-passagedata><tw-passagedata pid="55" name="Answer the phone." tags="" position="1367,356" size="100,100">&quot;Please c....come h..ome!&quot;  You hear through the other end of the phone.  &quot;I am sorry, let me fix this!  &quot;We can work through this!&quot;  Their voice is hysterical and panicked.  You can&#39;t help but be worried about them.  It sounds like their entire world is crumbling down.
+(if: $Want is false)[ (set: $counter to it + 1) ]
+(set: $Want to true)</tw-passagedata><tw-passagedata pid="54" name="Screw you guys!" tags="" position="1905,19" size="100,100">&quot;Look we love you.  We have your back no matter what.  10 years from now we could be having this same conversation and we will still love you.&quot;  Darnell says, as he shakes his head.  &quot;He&#39;s right.  You&#39;re gonna make your own decisions.  Just make sure your making them for yourself.  Get YOU where you need to be.  Then when the time comes, maybe your next relationship will resemble a playground scuffle instead of a national tragedy.&quot;  You look at Tori and smirk as she gives you a playful hug.  I love yall too.
+
+[[Close out your tab.]]
+(if: $Screw is false)[ (set: $counter to it + 1) ]
+(set: $Screw to true)</tw-passagedata><tw-passagedata pid="55" name="Answer the phone." tags="" position="1367,356" size="100,100">&quot;Please c....come h..ome!&quot;  You hear through the other end of the phone.  &quot;I am sorry, let me fix this!  &quot;We can work through this!&quot;  Their voice is hysterical and panicked.  You can&#39;t help but be worried about them.  It sounds like their entire world is crumbling down.
 
 [[Go home.]]
 
-[[Hang up and drive.-&gt;Keep driving.]]</tw-passagedata><tw-passagedata pid="56" name="Keep driving." tags="" position="2403,609" size="100,100">As you drive further, the weight on your shoulders begins to lighten.  Your phone rings again.
+[[Hang up and drive.-&gt;Keep driving.]]
+(if: $Answer is false)[ (set: $counter to it + 1) ]
+(set: $Answer to true)</tw-passagedata><tw-passagedata pid="56" name="Keep driving." tags="" position="2403,609" size="100,100">As you drive further, the weight on your shoulders begins to lighten.  Your phone rings again.
 
 [[Keep on driving.]]
 
-[[Answer the phone.]]</tw-passagedata><tw-passagedata pid="57" name="Keep on driving." tags="" position="2604,601" size="100,100">With every passing mile, you can feel your emotional baggage flying off of you, like unsecured baggage lost to the road.  A swarm of angry texts assault your phone. 
+[[Answer the phone.]]
+(if: $KD is false)[ (set: $counter to it + 1) ]
+(set: $KD to true)</tw-passagedata><tw-passagedata pid="57" name="Keep on driving." tags="" position="2604,601" size="100,100">With every passing mile, you can feel your emotional baggage flying off of you, like unsecured baggage lost to the road.  A swarm of angry texts assault your phone. 
 
 [[Answer the phone.]]
 
-[[Keep going a little further.]]</tw-passagedata><tw-passagedata pid="58" name="Keep going a little further." tags="" position="2800,601" size="100,100">You come to a stop sign.  The night is quiet and the road is baren.  You phone lights up once again.  This is never gonna stop, you think to yourself.
+[[Keep going a little further.]]
+(if: $KOD is false)[ (set: $counter to it + 1) ]
+(set: $KOD to true)</tw-passagedata><tw-passagedata pid="58" name="Keep going a little further." tags="" position="2800,601" size="100,100">You come to a stop sign.  The night is quiet and the road is baren.  You phone lights up once again.  This is never gonna stop, you think to yourself.
 
 [[Answer the phone.]]
 
-[[Toss the phone.]]</tw-passagedata><tw-passagedata pid="59" name="Toss the phone." tags="" position="2998,602" size="100,100">You toss the phone.  As you drive forward you look into your rear view mirror.  You can see its light fading away the further you go.  Then you realize, you&#39;re smiling at your own reflection again.  You have put yourself first and are on your way to creating the life you desire.
+[[Toss the phone.]]
+(if: $further is false)[ (set: $counter to it + 1) ]
+(set: $further $ to true)</tw-passagedata><tw-passagedata pid="59" name="End Game and Credits" tags="" position="2998,302" size="100,100">Congratulations on your first playthrough of Toxicity!  This game originated from a discussion about infinite loops in programming and how it is similar to being in a toxic relationship.  For whatever reason, you are trapped.  Eventually, after enough pain and suffering you finally get the code to compile or come to your senses and leave the relationship. I hope you enjoyed your time with my story!  
+(set: $total += $counter)
+You have completed (print: $total) of 62 passages!  Get the full story and take the journey again!
 
-[[End Game and Credits]]</tw-passagedata><tw-passagedata pid="60" name="End Game and Credits" tags="" position="2998,302" size="100,100">[[End Game-&gt;Play Game]] 
-</tw-passagedata><tw-passagedata pid="61" name="Go home." tags="" position="802,198" size="100,100">You pull up to your driveway.  The front door almost comes off the hinges as your partner burst through.  They bum rush you with tears before you can even get out of the car.  You are taken back by the severity of their motions.  Wow, they really do need you.
+This game is still a work in progress.
+All feedback is appreciated.  Tweet me @JoshuaAShook1
 
-[[Return the hug]]</tw-passagedata><tw-passagedata pid="62" name="Close out your tab." tags="" position="2003,203" size="100,100">You walk outside of the bar and look out into the dark.  As your eyes begin to adjust, you are startled by the sudden vibration of your phone.  You reach into your pocket and pull it out.  Looking at the caller ID your stomach drops.  I know I wasn&#39;t gonna get off this easy you think to yourself.  What do you do?
+[[View Credits]]</tw-passagedata><tw-passagedata pid="60" name="Go home." tags="" position="802,198" size="100,100">You pull up to your driveway.  The front door almost comes off the hinges as your partner burst through.  They bum rush you with tears before you can even get out of the car.  You are taken back by the severity of their motions.  Wow, they really do need you.
+
+[[Return the hug]]
+(if: $Home is false)[ (set: $counter to it + 1) ]
+(set: $Home to true)</tw-passagedata><tw-passagedata pid="61" name="Close out your tab." tags="" position="2003,203" size="100,100">You walk outside of the bar and look out into the dark.  As your eyes begin to adjust, you are startled by the sudden vibration of your phone.  You reach into your pocket and pull it out.  Looking at the caller ID your stomach drops.  I know I wasn&#39;t gonna get off this easy you think to yourself.  What do you do?
 
 [[Take a drive]]
 
-[[Answer the phone.]]</tw-passagedata><tw-passagedata pid="63" name="Ride home in silence." tags="" position="2058,1912" size="100,100">When you arrive home, you spot your lover&#39;s car is already in the driveway.  You walk in, exchange glances as you pass by, and hear a whoosh go past the left side of your face.  The object explodes on the wall in front of you.  You have been here before....
+[[Answer the phone.]]
+(if: $TAB is false)[ (set: $counter to it + 1) ]
+(set: $TAB to true)</tw-passagedata><tw-passagedata pid="62" name="Ride home in silence." tags="" position="2058,1912" size="100,100">When you arrive home, you spot your lover&#39;s car is already in the driveway.  You walk in, exchange glances as you pass by, and hear a whoosh go past the left side of your face.  The object explodes on the wall in front of you.  You have been here before....
 
-[[Try and keep your composure.-&gt;Take a deep breath.]]</tw-passagedata><tw-passagedata pid="64" name="Play Game" tags="" position="485,134" size="100,100">                              Toxicity
+[[Try and keep your composure.-&gt;Take a deep breath.]]
+(if: $RIDE is false)[ (set: $counter to it + 1) ]
+(set: $RIDE to true)</tw-passagedata><tw-passagedata pid="63" name="Play Game" tags="" position="485,134" size="100,100">                              Toxicity
 					   
 					   A Game By Joshua Shook
 
                              [[Prologue]]
-							 (set: $counter to 0)
-							 (set: $TADB to false)</tw-passagedata><tw-passagedata pid="65" name="Lean in to kiss them(Explicit)" tags="" position="688.6000061035156,1239" size="100,100">Sensing your intentions your partner leans in, accepting you.  Your lips clash with a passionate force.  A feeling of comfort and familiarity consumes you.  Lost in each other, all past transgressions are forgotten in this moment.  As your partner tightens their embrace, all doubts and fear are pushed from your mind.  Renewed with lust and excitement you pull them back from the door.  As if one mind your partner follows your lead and kicks the door closed with one foot.  You both retreat further into the room, removing each other&#39;s clothes and falling recklessly onto the bed.  Sensations of touch and taste overflow from your spirit as both of your legs, arms, and fingers are intertwined and lost within the sheets.  Sensing the elevation in your partner&#39;s breath you are taken to a higher plane.  Your motions accelerate and tense at the same time building to your breaking point.  &quot;Oh, oh, oh...&quot; Both of your bodies tremble together as you fulfill each other with ecstasy.  Resting within one another&#39;s arms you both look at each other, smile, and close your eyes.
+							 (set: $counter = 0)
+							 (set: $TADB to false)
+(set: $Talk to false)
+(set: $Pack to false)
+(set: $DRIVE to false)
+(set: $What to false)
+(set: $Remain to false)
+(set: $Turn to false)
+(set: $Bar to false)
+(set: $LAKE to false)
+(set: $Dude to false)
+(set: $Doc to false)
+(set: $Look to false)
+(set: $NTTT to false)
+(set: $Course to false)
+(set: $IDK to false)
+(set: $Return to false)
+(set: $INGU to false)
+(set: $Just to false)
+(set: $Fall to false)
+(set: $Ignore to false)
+(set: $LATP to false)
+(set: $KLTP to false)
+(set: $SLAM to false)
+(set: $GOOGLE to false)
+(set: $JF to false)
+(set: $Hell to false)
+(set: $LIE to false)
+(set: $Had to false)
+(set: $Dont to false)
+(set: $Cheers to false)
+(set: $Admit to false)
+(set: $3m to false)
+(set: $Sorry to false)
+(set: $ZZZ to false)
+(set: $ENJOY to false)
+(set: $DOWN to false)
+(set: $DAQ to false)
+(set: $HEAD to false)
+(set: $UBER to false)
+(set: $Brace to false)
+(set: $HASH to false)
+(set: $YEAH to false)
+(set: $Change to false)
+(set: $DAD to false)
+(set: $Listen to false)
+(set: $Cont to false)
+(set: $Rocks to false)
+(set: $REACT to false)
+(set: $Gather to false)
+(set: $Right to false)
+(set: $Bait to false)
+(set: $Want to false)
+(set: $Screw to false)
+(set: $Answer to false)
+(set: $KD to false)
+(set: $KOD to false)
+(set: $further $ to false)
+(set: $Home to false)
+(set: $TAB to false)
+(set: $RIDE to false)
+(set: $Lean to false)</tw-passagedata><tw-passagedata pid="64" name="Lean in to kiss them(Explicit)" tags="" position="688,1239" size="100,100">Sensing your intentions your partner leans in, accepting you.  Your lips clash with a passionate force.  A feeling of comfort and familiarity consumes you.  Lost in each other, all past transgressions are forgotten in this moment.  As your partner tightens their embrace, all doubts and fear are pushed from your mind.  Renewed with lust and excitement you pull them back from the door.  As if one mind your partner follows your lead and kicks the door closed with one foot.  You both retreat further into the room, removing each other&#39;s clothes and falling recklessly onto the bed.  Sensations of touch and taste overflow from your spirit as both of your legs, arms, and fingers are intertwined and lost within the sheets.  Sensing the elevation in your partner&#39;s breath you are taken to a higher plane.  Your motions accelerate and tense at the same time building to your breaking point.  &quot;Oh, oh, oh...&quot; Both of your bodies tremble together as you fulfill each other with ecstasy.  Resting within one another&#39;s arms you both look at each other, smile, and close your eyes.
 
-[[Fall asleep]]</tw-passagedata></tw-storydata>
+[[Fall asleep]]
+(if: $Lean is false)[ (set: $counter to it + 1) ]
+(set: $Lean to true)</tw-passagedata><tw-passagedata pid="65" name="Toss the phone." tags="" position="3000,558" size="100,100">You toss the phone.  As you drive forward you look into your rear view mirror.  You can see its light fading away the further you go.  Then you realize, you&#39;re smiling at your own reflection again.  You have put yourself first and are on your way to creating the life you desire.
+
+[[End Game and Credits]]
+(if: $Toss is false)[ (set: $counter to it + 1) ]
+(set: $Toss $ to true)</tw-passagedata><tw-passagedata pid="66" name="View Credits" tags="" position="2802,179" size="100,100">[[Discover all the passages.-&gt;Play Game]]
+
+Works Cited
+
+Background Music: 
+Thaehan. &quot;Remorse.&quot; Bandcamp, https://chilledcow.bandcamp.com/album/lazy-sunday-lofi-hip-hop-chill-beats
+
+Background Image:
+Tims, Jezz, Neon love sign, https://unsplash.com/photos/bwtgal6MJLM
+
+Helpful Links and sites:
+All the amazing and helpful people at the Twine Games Discord Server
+https://twinery.org/wiki/start
+https://www.youtube.com/channel/UCTWJzxNdsIDHiYzGh-2Fd1w
+https://www.youtube.com/channel/UCdnZ8zeuSgbYUHLbpl8G5uw
+</tw-passagedata></tw-storydata>
 
 <script title="Twine engine code" data-main="harlowe">"use strict";function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}var _slicedToArray=function(){function e(e,t){var n=[],r=!0,i=!1,o=void 0;try{for(var a,s=e[Symbol.iterator]();!(r=(a=s.next()).done)&&(n.push(a.value),!t||n.length!==t);r=!0);}catch(e){i=!0,o=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw o}}return n}return function(t,n){if(Array.isArray(t))return t;if(Symbol.iterator in Object(t))return e(t,n);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};!function(){/**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
